@@ -24,4 +24,7 @@ Route::controller(ProductController::class)->middleware([AdminLoginCheck::class]
     Route::get('create-product', 'create')->name('products.create');
     Route::post('save-product', 'save')->name('product.save');
     Route::get('delete/{id}', 'delete')->name('product.delete');
+    Route::get('edit-product/{id}','edit')->name('product.edit');
+    Route::post('update-product', 'update')->name('product.update');
+
 });

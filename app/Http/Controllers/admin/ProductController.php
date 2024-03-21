@@ -34,7 +34,7 @@ class ProductController extends Controller
     public function delete($id){
         $product= Product::find(decrypt($id));
         if($product->image){
-            Storage::delete('storage/'. $product->image);
+            // Storage::delete($product->image);
         }
         if($product->delete()){
             return redirect()->route('admin.products')->with('success','Product deleted successfully');
@@ -44,5 +44,22 @@ class ProductController extends Controller
         }
 
 
+    }
+    public function edit($id){
+        $product= Product::find(decrypt($id));
+        return view('admin.products.edit',compact('product'));
+    }
+    public function update(ProductSaveRequest $request){
+        $product = Product::find(decrypt($request->id));
+        $input = $request->validated();
+        if($request->image){
+            $image = $request->file('image');
+            $fileName = $image->hashName();
+             $image->storeAs('images', $fileName);
+             $input['image'] = $image->storeAs('images', $fileName);
+
+        }
+        $product->update($input);
+        return redirect()->route('admin.products')->with('success','Product Updated Succesfully');
     }
 }
