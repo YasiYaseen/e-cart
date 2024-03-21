@@ -25,13 +25,21 @@
             <div class="row mb-2">
                 <div class="col-sm-6">
                     <h1>Products</h1>
+
                 </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
                         <li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}">Home</a></li>
                         <li class="breadcrumb-item active">Products</li>
                     </ol>
+
                 </div>
+                @session('success')
+                <p class="alert alert-success">{{$value}}</p>
+                @endsession
+                @session('error')
+                <p class="alert alert-danger">{{$value}}</p>
+                @endsession
             </div>
         </div><!-- /.container-fluid -->
     </section>
@@ -44,39 +52,48 @@
                     <div class="card">
                         <div class="card-header">
                             <h3 class="card-title">Products </h3>
-                            <a href="{{route('admin.dashboard')}}" class="btn btn-primary">Add</a>
+                            <a href="{{route('admin.products.create')}}" class="btn btn-primary">Add</a>
                         </div>
                         <!-- /.card-header -->
                         <div class="card-body">
                             <table id="example2" class="table table-bordered table-hover">
                                 <thead>
                                     <tr>
-                                        <th>Rendering engine</th>
-                                        <th>Browser</th>
-                                        <th>Platform(s)</th>
-                                        <th>Engine version</th>
-                                        <th>CSS grade</th>
+                                        <th>#</th>
+                                        <th>Image</th>
+                                        <th>Name</th>
+                                        <th>Price</th>
+                                        <th>Description</th>
+                                        <th>Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
+                                    @foreach ($products as $product)
+                                        <tr>
+                                            <td>{{$loop->index+$products->firstItem()}}</td>
+                                        <td><img src="{{asset('storage/'.$product->image)}}" alt="" width="70"></td>
+                                        <td>{{$product->name}}</td>
+                                        <td>{{$product->price}}</td>
+                                        <td>{{$product->description_short}}</td>
+                                        <td><a href="" class="btn btn-info me-2">Edit</a> <a href="{{route('admin.product.delete',encrypt($product->id))}}" class="btn btn-danger">Delete</a></td>
                                     </tr>
+                                    @endforeach
+
                                 </tbody>
                                 {{-- <tfoot>
                                     <tr>
-                                        <th>Rendering engine</th>
-                                        <th>Browser</th>
-                                        <th>Platform(s)</th>
-                                        <th>Engine version</th>
-                                        <th>CSS grade</th>
+                                        <th>Image</th>
+                                        <th>Name</th>
+                                        <th>Price</th>
+                                        <th>Description</th>
+                                        <th>Action</th>
                                     </tr>
                                 </tfoot> --}}
                             </table>
+                            <div class="mt-1 text-center justify-content-center d-flex">
+                                 {{$products->links()}}
+                            </div>
+
                         </div>
                         <!-- /.card-body -->
                     </div>
@@ -113,11 +130,11 @@
         $(function() {
 
             $('#example2').DataTable({
-                "paging": true,
+                "paging": false,
                 "lengthChange": false,
                 "searching": true,
                 "ordering": true,
-                "info": true,
+                "info": false,
                 "autoWidth": false,
                 "responsive": true,
             });
