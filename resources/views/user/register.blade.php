@@ -35,9 +35,9 @@
                       </div>
                       <div class="col-6">
                         <div class="form-floating mb-3">
-                          <input type="text" class="form-control @error('second_name')is-invalid @enderror" name="second_name"  placeholder="Second Name" required>
-                          <label  class="form-label">Second Name</label>
-                          @error('second_name')<p class="text-danger"> {{$message}} </p> @enderror
+                          <input type="text" class="form-control @error('last_name')is-invalid @enderror" name="last_name"  placeholder="last Name" required>
+                          <label  class="form-label">Last Name</label>
+                          @error('last_name')<p class="text-danger"> {{$message}} </p> @enderror
 
                         </div>
                       </div>
