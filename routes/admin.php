@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Route;
 
 //dashboard
 Route::controller(AdminDashBoardController::class)->middleware([AdminLoginCheck::class])->group(function () {
-    Route::get('/', 'dashboard')->name('dashboard');
+    //
 });
 
 //login
@@ -20,6 +20,7 @@ Route::controller(AdminLoginController::class)->group(function () {
 
 //products
 Route::controller(ProductController::class)->middleware([AdminLoginCheck::class])->group(function () {
+    Route::get('/', 'products')->name('dashboard');
     Route::get('products', 'products')->name('products');
     Route::get('create-product', 'create')->name('products.create');
     Route::post('save-product', 'save')->name('product.save');
