@@ -33,5 +33,8 @@ Route::controller(LoginController::class)->group(function () {
 
 Route::controller(UserCartController::class)->middleware([UserLoginCheck::class])->group(function () {
 Route::get('cart','cartPage')->name('cart');
+Route::get('product-details/{id}','details')->name('product.details');
+Route::post('add-to-cart','AddToCart')->name('product.cart.add');
+Route::get('delete-from-cart/{id}','delete')->name('cart.delete');
 });
 

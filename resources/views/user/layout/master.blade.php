@@ -14,6 +14,11 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
     <link rel="stylesheet" href="{{ asset('css/user/home.css') }}">
     @yield('styles')
+    <style>
+        .page-wrapper>section,.page-wrapper>div{
+            min-height: 90vh
+        }
+    </style>
 </head>
 
 <body>
@@ -24,8 +29,8 @@
             </div>
             <nav>
                 <ul id="MenuItems">
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="product.html">Products</a></li>
+                    <li><a href="{{route('home')}}">Home</a></li>
+                    <li><a href="{{route('home')}}">Products</a></li>
                     {{-- <li><a href="#">About</a></li>
                     <li><a href="#">Contact</a></li> --}}
                     @auth
@@ -44,9 +49,9 @@
             <img src="https://i.ibb.co/6XbqwjD/menu.png" alt="" class="menu-icon" onclick="menutoggle()" />
         </div>
     </div>
-
+   <div class="page-wrapper">
     @yield('content')
-
+</div>
 
     <!-- Footer -->
     <div class="footer">
@@ -109,6 +114,7 @@
             }
         }
     </script>
+    @yield('scripts')
 </body>
 
 </html>

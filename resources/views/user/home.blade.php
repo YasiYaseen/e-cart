@@ -1,42 +1,44 @@
-
 @extends('user.layout.master')
 @section('styles')
-<style>
-   .page-item.active .page-link {
-    z-index: 3;
-    color: #fff;
-    background-color: #ff2929cc;
-    border-color: #fd5858d4;
-}
-.page-link:hover {
-    z-index: 2;
-    color: #dc3545;
-    text-decoration: none;
-    background-color: #e9ecef;
-    border-color: #dee2e6;
-}
-.page-link {
-    position: relative;
-    display: block;
-    padding: 0.5rem 0.75rem;
-    margin-left: -1px;
-    line-height: 1.25;
-    color: #ff523b;
-    background-color: #fff;
-    border: 1px solid #dee2e6;
-}
-</style>
+    <style>
+        .page-item.active .page-link {
+            z-index: 3;
+            color: #fff;
+            background-color: #ff2929cc;
+            border-color: #fd5858d4;
+        }
 
+        .page-link:hover {
+            z-index: 2;
+            color: #dc3545;
+            text-decoration: none;
+            background-color: #e9ecef;
+            border-color: #dee2e6;
+        }
+
+        .page-link {
+            position: relative;
+            display: block;
+            padding: 0.5rem 0.75rem;
+            margin-left: -1px;
+            line-height: 1.25;
+            color: #ff523b;
+            background-color: #fff;
+            border: 1px solid #dee2e6;
+        }
+        .product-link:hover{
+            text-decoration: none;
+
+        }
+    </style>
 @endsection
 @section('content')
-
-
     <div class="small-container">
         <div class="row row-2">
             <h2>All Products</h2>
             <select onselect="">
                 <option value="">Default Sorting</option>
-                <option value="" >Short by price</option>
+                <option value="">Short by price</option>
                 <option value="">Short by popularity</option>
                 <option value="">Short by rating</option>
                 <option value="">Short by sale</option>
@@ -45,23 +47,25 @@
         <div class="row">
             @foreach ($products as $product)
                 <div class="col-4">
-                <img src="{{asset('storage/'.$product->image)}}" alt="" />
-                <h4>{{$product->name}}</h4>
-                <div class="rating">
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="far fa-star"></i>
+                    <a href="{{ route('product.details', encrypt($product->id)) }}" class="product-link">
+                        <img src="{{ asset('storage/' . $product->image) }}" alt="" />
+                        <h4>{{ $product->name }}</h4>
+                        <div class="rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="far fa-star"></i>
+                        </div>
+                        <p>₹{{ $product->price }}</p>
+                    </a>
                 </div>
-                <p>₹{{$product->price}}</p>
-            </div>
             @endforeach
 
 
         </div>
         <div class="d-flex justify-content-center">
-                  <div class=""> {{$products->links()}}</div>
+            <div class=""> {{ $products->links() }}</div>
         </div>
 
         {{-- <div class="page-btn">
@@ -72,6 +76,4 @@
             <span>&#8594;</span>
         </div> --}}
     </div>
-
-
 @endsection
