@@ -26,9 +26,22 @@
             background-color: #fff;
             border: 1px solid #dee2e6;
         }
-        .product-link:hover{
+
+        .product-link:hover {
             text-decoration: none;
 
+        }
+
+        .product-img {
+            width: 245px;
+            aspect-ratio: 1;
+            background-color: #f9f9f9;
+        }
+
+        .product-img img {
+            max-width: 100%;
+            height: 100%;
+            object-fit: contain;
         }
     </style>
 @endsection
@@ -36,19 +49,20 @@
     <div class="small-container">
         <div class="row row-2">
             <h2>All Products</h2>
-            <select onselect="">
+            {{-- <select onselect="">
                 <option value="">Default Sorting</option>
                 <option value="">Short by price</option>
                 <option value="">Short by popularity</option>
                 <option value="">Short by rating</option>
                 <option value="">Short by sale</option>
-            </select>
+            </select> --}}
         </div>
         <div class="row">
             @foreach ($products as $product)
                 <div class="col-4">
                     <a href="{{ route('product.details', encrypt($product->id)) }}" class="product-link">
-                        <img src="{{ asset('storage/' . $product->image) }}" alt="" />
+                        <div class="product-img"> <img src="{{ asset('storage/' . $product->image) }}" class="img-fluid"
+                                alt="" /></div>
                         <h4>{{ $product->name }}</h4>
                         <div class="rating">
                             <i class="fas fa-star"></i>

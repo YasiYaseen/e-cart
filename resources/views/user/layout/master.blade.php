@@ -18,6 +18,15 @@
         .page-wrapper>section,.page-wrapper>div{
             min-height: 90vh
         }
+        .logo-anchor{
+            color: rgb(8, 8, 39);
+
+        }
+        .logo-anchor:hover{
+            text-decoration: none;
+
+
+        }
     </style>
 </head>
 
@@ -25,12 +34,14 @@
     <div class="container">
         <div class="navbar">
             <div class="logo">
-                <a href="index.html"><img src="https://i.ibb.co/kDVwgwp/logo.png" alt="RedStore" width="125px" /></a>
+                <a href="{{route('home')}}" class="logo-anchor">
+                   <h3>E Cart</h3>
+                </a>
             </div>
             <nav>
                 <ul id="MenuItems">
                     <li><a href="{{route('home')}}">Home</a></li>
-                    <li><a href="{{route('home')}}">Products</a></li>
+                    <li><a href="{{route('orders')}}">Orders</a></li>
                     {{-- <li><a href="#">About</a></li>
                     <li><a href="#">Contact</a></li> --}}
                     @auth
@@ -67,20 +78,20 @@
                 </div>
 
                 <div class="footer-col-2">
-                    <img src="https://i.ibb.co/j3FNGj7/logo-white.png" alt="" />
+                    <h3 class="logo-anchor">E Cart</h3>
                     <p>
                         Our Purpose Is To Sustainably Make the Pleasure and Benefits of
-                        Sports Accessible to the Many.
+                        products Accessible to the Many.
                     </p>
                 </div>
 
                 <div class="footer-col-3">
                     <h3>Useful Links</h3>
                     <ul>
-                        <li>Coupons</li>
-                        <li>Blog Post</li>
-                        <li>Return Policy</li>
-                        <li>Join Affiliate</li>
+                        <li>Orders</li>
+                        <li>Profile</li>
+                        <li>Cart</li>
+                        <li>Home</li>
                     </ul>
                 </div>
 
@@ -95,7 +106,6 @@
                 </div>
             </div>
             <hr />
-            <p class="copyright">Copyright &copy; 2021 - Red Store</p>
         </div>
     </div>
 

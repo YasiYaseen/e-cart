@@ -30,6 +30,12 @@
             justify-content: left;
             margin-left: unset;
         }
+        .card-body.address-body {
+    height: 171px;
+    overflow: hidden;
+    overflow-y: scroll;
+    scrollbar-width: none;
+}
     </style>
 @endsection
 @section('content')
@@ -187,7 +193,7 @@
                                 @foreach ($addresses as $address)
                                     <div class="card bg-light mb-3 mb-auto" style="width: 18rem;">
                                         <div class="card-header d-flex">{{$address->name}} <a class="ml-auto text-danger" href="{{route('address.delete',encrypt($address->id))}}">x</a></div>
-                                        <div class="card-body">
+                                        <div class="card-body address-body">
                                             <h5 class="card-title">{{$address->house}}</h5>
                                             <p class="card-title">{{$address->street}},{{$address->city}},{{$address->state}},{{$address->pincode}}</p>
                                             <p class="card-text">{{$address->phone}}</p>

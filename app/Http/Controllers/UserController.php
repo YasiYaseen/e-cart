@@ -35,11 +35,11 @@ class UserController extends Controller
         $address['user_id']=$user_id;
         $address['phone']=$address['number'];
         UserAddress::create($address);
-        return redirect()->route('profile');
+        return back();
     }
     public function deleteAddress($id){
         UserAddress::find(decrypt($id))->delete();
-        return redirect()->route('profile');
+        return back();
 
     }
 }
