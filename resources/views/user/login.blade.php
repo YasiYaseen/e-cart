@@ -27,7 +27,7 @@
                 <div class="row gy-2 overflow-hidden">
                   <div class="col-12">
                     <div class="form-floating mb-3">
-                      <input type="email" class="form-control @error('email')is-invalid @enderror" name="email" id="email" placeholder="name@example.com" required>
+                      <input type="email" class="form-control @error('email')is-invalid @enderror" name="email" id="email" placeholder="Email"  value="{{old('email')}}" required>
                       <label for="email" class="form-label">Email</label>
                       @error('email')<p class="text-danger"> {{$message}} </p> @enderror
 

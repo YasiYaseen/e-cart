@@ -17,6 +17,10 @@
                                     class="text-body">price <i class="fas fa-angle-down mt-1"></i></a></p>
                         </div> --}}
                     </div>
+                    @if (count($orders) == 0)
+                        <h5 class="text-center " style="margin-top: 25%">Your Orders List is empty</h5>
+                        <a href="{{ route('home') }}" class="btn btn-warning btn-block btn-lg">Order Products</a>
+                    @endif
                     @foreach ($orders as $item)
                         <div class="card rounded-3 mb-4 product-card">
                             <div class="card-body p-4">

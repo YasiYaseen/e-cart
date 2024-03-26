@@ -27,7 +27,7 @@
                 <div class="row gy-2 overflow-hidden">
                     <div class="col-6">
                         <div class="form-floating mb-3">
-                          <input type="text" class="form-control @error('first_name')is-invalid @enderror" name="first_name"  placeholder="First Name" required>
+                          <input type="text" class="form-control @error('first_name')is-invalid @enderror" name="first_name"  placeholder="First Name" value="{{old('first_name')}}" required>
                           <label  class="form-label">First Name</label>
                           @error('first_name')<p class="text-danger"> {{$message}} </p> @enderror
 
@@ -35,7 +35,7 @@
                       </div>
                       <div class="col-6">
                         <div class="form-floating mb-3">
-                          <input type="text" class="form-control @error('last_name')is-invalid @enderror" name="last_name"  placeholder="last Name" required>
+                          <input type="text" class="form-control @error('last_name')is-invalid @enderror" name="last_name"  placeholder="last Name" value="{{old('last_name')}}" required>
                           <label  class="form-label">Last Name</label>
                           @error('last_name')<p class="text-danger"> {{$message}} </p> @enderror
 
@@ -43,7 +43,7 @@
                       </div>
                   <div class="col-6">
                     <div class="form-floating mb-3">
-                      <input type="email" class="form-control @error('email')is-invalid @enderror" name="email"  placeholder="Email" required>
+                      <input type="email" class="form-control @error('email')is-invalid @enderror" name="email"  placeholder="Email" value="{{old('email')}}" required>
                       <label for="email" class="form-label">Email</label>
                       @error('email')<p class="text-danger"> {{$message}} </p> @enderror
 
@@ -51,7 +51,7 @@
                   </div>
                   <div class="col-6">
                     <div class="form-floating mb-3">
-                      <input type="number" class="form-control @error('phone')is-invalid @enderror" name="phone"  placeholder="Phone" required>
+                      <input type="number" class="form-control @error('phone')is-invalid @enderror" name="phone"  placeholder="Phone" value="{{old('phone')}}" required>
                       <label  class="form-label">Phone</label>
                       @error('phone')<p class="text-danger"> {{$message}} </p> @enderror
 
@@ -59,14 +59,14 @@
                   </div>
                   <div class="col-12">
                     <div class="form-floating mb-3">
-                      <input type="password" class="form-control @error('password')is-invalid @enderror" name="password" id="password" value="" placeholder="Password" required>
+                      <input type="password" class="form-control @error('password')is-invalid @enderror" name="password" id="password" value="{{old('password')}}" placeholder="Password" required>
                       <label for="password" class="form-label">Password</label>
                       @error('password')<p class="text-danger"> {{$message}} </p> @enderror
                     </div>
                   </div>
                   <div class="col-12">
                     <div class="form-floating mb-3">
-                      <input type="text" class="form-control @error('password_confirmation')is-invalid @enderror" name="password_confirmation"  value="" placeholder="Confirm Password" required>
+                      <input type="text" class="form-control @error('password_confirmation')is-invalid @enderror" name="password_confirmation"  value="{{old('password_confirmation')}}" placeholder="Confirm Password" required>
                       <label  class="form-label">Confirm Password</label>
                       @error('password_confirmation') <p class="text-danger"> {{$message}} </p>@enderror
                     </div>

@@ -162,12 +162,12 @@
                             <div class="form-group">
                                 <label class="form-control-label">USERNAME</label>
                                 <input type="text" class="form-control @error('username') is-invalid @enderror"
-                                    name="username">
+                                    name="username" value="{{old('username')}}">
                             </div>
                             <div class="form-group">
                                 <label class="form-control-label">PASSWORD</label>
                                 <input type="password" class="form-control @error('password') is-invalid @enderror"
-                                    name="password">
+                                    name="password" value="{{old('password')}}">
                             </div>
 
                             <div class="col-lg-12 loginbttm">
