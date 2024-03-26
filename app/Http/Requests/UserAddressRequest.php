@@ -35,4 +35,5 @@ class UserAddressRequest extends FormRequest
             'pincode' => 'required|string|max:255',
         ];
     }
+
 }

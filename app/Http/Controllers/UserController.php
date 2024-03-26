@@ -30,6 +30,7 @@ class UserController extends Controller
         return redirect()->route('profile');
     }
     public function saveAddress(UserAddressRequest $request){
+
         $address = $request->validated();
         $user_id =decrypt($request->id);
         $address['user_id']=$user_id;

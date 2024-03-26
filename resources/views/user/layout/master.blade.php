@@ -88,10 +88,10 @@
                 <div class="footer-col-3">
                     <h3>Useful Links</h3>
                     <ul>
-                        <li>Orders</li>
-                        <li>Profile</li>
-                        <li>Cart</li>
-                        <li>Home</li>
+                        <li><a href="{{route('orders')}}">Orders</a></li>
+                        <li><a href="{{route('profile')}}">Profile</a></li>
+                        <li><a href="{{route('cart')}}">Cart</a></li>
+                        <li><a href="{{route('home')}}">Home</a></li>
                     </ul>
                 </div>
 
