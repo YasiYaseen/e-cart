@@ -70,7 +70,7 @@ class UserCartController extends Controller
     }
 
     public function orders(){
-        $orders = Order::where('user_id', Auth::user()->id)->get();
+        $orders = Order::where('user_id', Auth::user()->id)->orderByDesc('created_at')->get();
         return view('user.cart.orders', compact('orders'));
     }
 }
