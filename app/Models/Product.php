@@ -25,7 +25,9 @@ class Product extends Model
     {
         return Attribute::make(
             get: fn($value) => "₹".number_format($value,2),
+            set: fn($value) => (float) str_replace([',','₹'], '', $value),
         );
+
     }
     protected $appends=['description_short'];
 }

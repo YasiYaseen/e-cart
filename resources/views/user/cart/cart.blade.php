@@ -41,7 +41,7 @@
                                         <input id="form1" min="1" value="{{ $item->quantity }}" type="number"
                                             class="form-control form-control-sm quantity-inp" disabled />
                                         <input min="1" name="quantity" value="{{ $item->quantity }}" type="hidden"
-                                            class="quantity-inp" />
+                                            class="" />
                                         <button class="btn btn-link px-2 mx-1 quantity-btn"
                                             onclick="this.parentNode.querySelector('input[type=number]').stepUp()">
                                             <i class="fas fa-plus"></i>
@@ -102,8 +102,10 @@
 
                 $('.quantity-inp').each(function() {
                     var quantity = parseInt($(this).val());
+
                     var price = parseFloat($(this).closest('.product-card').find('.product-price').text()
-                        .replace('₹', ''));
+                        .replace('₹','').replace(',',''));
+                        console.log(price*quantity);
                     var subtotal = quantity * price;
 
                     total += subtotal;

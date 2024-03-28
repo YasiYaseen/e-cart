@@ -36,30 +36,42 @@
                                     <label for="exampleInputEmail1">Name</label>
                                     <input type="text" class="form-control @error('name')is-invalid @enderror"
                                         placeholder="Product Name" name="name" value="{{old('name',$product->name)}}">
+                                        @error('name')
+                                            <p class="text-danger">{{$message}}</p>
+                                        @enderror
                                 </div>
                                 <div class="form-group">
                                     <label>Price</label>
                                     <input type="text" class="form-control @error('price') is-invalid @enderror"
                                         placeholder="Price" name="price" value="{{old('price',$product->price)}}">
+                                        @error('price')
+                                            <p class="text-danger">{{$message}}</p>
+                                        @enderror
                                 </div>
                                 <div class="form-group">
                                     <label>Details</label>
                                     <textarea class="form-control @error('description') is-invalid @enderror" rows="3" placeholder="Details ..."
                                         name="description">{{old('description',$product->description)}}</textarea>
                                 </div>
+                                @error('description')
+                                            <p class="text-danger">{{$message}}</p>
+                                        @enderror
                                 <div class="form-group">
                                     <label for="exampleInputFile">File input</label>
                                     <img src="{{asset('storage/'.$product->image)}}" alt="">
                                     <div class="input-group">
                                         <div class="custom-file">
                                             <input type="file"
-                                                class="custom-file-input @error('file')is-invalid @enderror" name="image" value="{{old('image',$product->image)}}">
+                                                class="custom-file-input @error('image')is-invalid @enderror" name="image" value="{{old('image',$product->image)}}">
                                             <label class="custom-file-label">Choose file</label>
                                         </div>
                                         <div class="input-group-append">
                                             <span class="input-group-text">Update</span>
                                         </div>
                                     </div>
+                                    @error('image')
+                                            <p class="text-danger">{{$message}}</p>
+                                        @enderror
                                 </div>
                                 {{-- <div class="form-check">
                                     <input type="checkbox" class="form-check-input">

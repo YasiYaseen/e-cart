@@ -23,10 +23,18 @@ class ProductSaveRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name'=>['required'],
-            'price'=>['required','numeric','min:0'],
-            'description'=>['nullable'],
-            'image'=>['nullable',File::image()]
+            'name' => ['required'],
+            'price' => [
+                'required', 'min:0',
+                function ($attribute, $value, $fail) {
+                    $formate = str_replace([',', '₹'], '', $value);
+                    if (!is_numeric($formate)) {
+                        $fail("The {$attribute} must be a valid numeric value.");
+                    }
+                }
+            ],
+            'description' => ['nullable'],
+            'image' => ['nullable', File::image()]
         ];
     }
 }
