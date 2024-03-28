@@ -75,7 +75,7 @@
                                         <td>{{$product->name}}</td>
                                         <td>{{$product->price}}</td>
                                         <td>{{$product->description_short}}</td>
-                                        <td><a href="{{route('admin.product.edit',encrypt($product->id))}}" class="btn btn-info me-2">Edit</a> <a href="{{route('admin.product.delete',encrypt($product->id))}}" class="btn btn-danger">Delete</a></td>
+                                        <td><a href="{{route('admin.product.edit',encrypt($product->id))}}" class="btn btn-info me-2">Edit</a> <a href="{{route('admin.product.delete',encrypt($product->id))}}" class="btn btn-danger delete">Delete</a></td>
                                     </tr>
                                     @endforeach
 
@@ -132,7 +132,7 @@
             $('#example2').DataTable({
                 "paging": false,
                 "lengthChange": false,
-                "searching": true,
+                "searching": false,
                 "ordering": true,
                 "info": false,
                 "autoWidth": false,

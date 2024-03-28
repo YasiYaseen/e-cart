@@ -48,10 +48,10 @@
                                         </button>
                                     </div>
                                     <div class="col-md-3 col-lg-2 col-xl-2 offset-lg-1">
-                                        <h5 class="mb-0 product-price">₹{{ $item->product->price }}</h5>
+                                        <h5 class="mb-0 product-price">{{ $item->product->price }}</h5>
                                     </div>
-                                    <div class="col-md-1 col-lg-1 col-xl-1 text-end">
-                                        <a href="{{ route('cart.delete', encrypt($item->id)) }}" class="text-danger"><i
+                                    <div class="col-md-1 col-lg-1 col-xl-1 text-end ">
+                                        <a href="{{ route('cart.delete', encrypt($item->id)) }}"  class="text-danger delete"><i
                                                 class="fas fa-trash fa-lg"></i></a>
                                     </div>
                                 </div>

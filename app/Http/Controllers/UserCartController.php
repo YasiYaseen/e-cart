@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Cart;
 use App\Models\Order;
+use App\Models\OrderProduct;
 use App\Models\Product;
 use App\Models\UserAddress;
 use Illuminate\Http\Request;
@@ -54,22 +55,30 @@ class UserCartController extends Controller
         ]);
         $input =  $validator->validated();
         $address = UserAddress::find(decrypt($input['address']));
-        $addressText =$address->addressText();
-        $cartItems = Cart::where('user_id', auth()->user()->id)->get(['id','user_id', 'product_id', 'quantity']);
-
-        foreach ($cartItems as $cartItem) {
-            Order::create([
-                'user_id' => $cartItem->user_id,
-                'product_id' => $cartItem->product_id,
-                'quantity' => $cartItem->quantity,
+        $addressText = $address->addressText();
+        $cartItems = Cart::where('user_id', auth()->user()->id)->get(['id', 'user_id', 'product_id', 'quantity']);
+        if (count($cartItems) != 0) {
+           $order = Order::create([
+                'user_id' => auth()->user()->id,
                 'address' => $addressText,
             ]);
-            $cartItem->delete();
+            foreach ($cartItems as $cartItem) {
+                OrderProduct::create([
+                    'order_id'=>$order->id,
+                    'product_id' => $cartItem->product_id,
+                    'quantity' => $cartItem->quantity,
+                ]);
+                $cartItem->delete();
+            }
+        } else {
+            return back();
         }
+
         return redirect()->route('orders');
     }
 
-    public function orders(){
+    public function orders()
+    {
         $orders = Order::where('user_id', Auth::user()->id)->orderByDesc('created_at')->get();
         return view('user.cart.orders', compact('orders'));
     }

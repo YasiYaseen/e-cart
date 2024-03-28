@@ -64,14 +64,14 @@
                         <div class="product-img"> <img src="{{ asset('storage/' . $product->image) }}" class="img-fluid"
                                 alt="" /></div>
                         <h4>{{ $product->name }}</h4>
-                        <div class="rating">
+                        {{-- <div class="rating">
                             <i class="fas fa-star"></i>
                             <i class="fas fa-star"></i>
                             <i class="fas fa-star"></i>
                             <i class="fas fa-star"></i>
                             <i class="far fa-star"></i>
-                        </div>
-                        <p>₹{{ $product->price }}</p>
+                        </div> --}}
+                        <p>{{ $product->price }}</p>
                     </a>
                 </div>
             @endforeach

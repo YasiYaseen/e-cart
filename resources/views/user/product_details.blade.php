@@ -9,7 +9,7 @@
                         <div class="pro-img-details">
                             <img src="{{ asset('storage/' . $product->image) }}" alt="">
                         </div>
-                        <div class="pro-img-list">
+                        {{-- <div class="pro-img-list">
                             <a href="#">
                                 <img src="https://www.bootdey.com/image/115x100/87CEFA/000000" alt="">
                             </a>
@@ -22,7 +22,7 @@
                             <a href="#">
                                 <img src="https://www.bootdey.com/image/120x100/20B2AA/000000" alt="">
                             </a>
-                        </div>
+                        </div> --}}
                     </div>
                     <div class="col-md-6">
                         <h2 class="pro-d-title">
@@ -42,7 +42,7 @@
                         </div> --}}
                         <div class="m-bot15"> <strong>Price : </strong>
                             {{-- <span class="amount-old">$544</span> --}}
-                            <span class="pro-price"> ₹{{ $product->price }}</span>
+                            <span class="pro-price"> {{ $product->price }}</span>
                         </div>
                         <form action="{{ route('product.cart.add') }}" method="POST">
                             @csrf

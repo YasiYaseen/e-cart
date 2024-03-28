@@ -124,6 +124,8 @@
             }
         }
     </script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="{{asset('js/script.js')}}"></script>
     @yield('scripts')
 </body>
 

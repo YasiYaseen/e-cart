@@ -2,7 +2,8 @@
 
 namespace App\Models;
 
-use Attribute;
+
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -19,6 +20,12 @@ class Product extends Model
         }else{
           return $this->description;
         }
+    }
+    public function price():Attribute
+    {
+        return Attribute::make(
+            get: fn($value) => "₹".number_format($value,2),
+        );
     }
     protected $appends=['description_short'];
 }

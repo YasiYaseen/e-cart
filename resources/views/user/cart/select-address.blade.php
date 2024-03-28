@@ -37,8 +37,8 @@
 
                                                     <div class="card bg-light mb-3 mb-auto" style="flex: 1">
                                                         <div class="card-header d-flex">{{ $address->name }} <a
-                                                                class="ml-auto text-danger"
-                                                                href="{{ route('address.delete', encrypt($address->id)) }}">x</a>
+                                                                class="ml-auto text-danger delete"
+                                                                href="{{ route('address.delete', encrypt($address->id)) }}"><img src="{{asset('images/bin.png')}}" alt="delete" width="16"></a>
                                                         </div>
                                                         <div class="card-body">
                                                             <h5 class="card-title">{{ $address->house }}</h5>

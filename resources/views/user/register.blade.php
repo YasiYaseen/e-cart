@@ -51,7 +51,7 @@
                   </div>
                   <div class="col-6">
                     <div class="form-floating mb-3">
-                      <input type="number" class="form-control @error('phone')is-invalid @enderror" name="phone"  placeholder="Phone" value="{{old('phone')}}" required>
+                      <input type="text" class="form-control @error('phone')is-invalid @enderror" name="phone"  placeholder="Phone" value="{{old('phone')}}" required>
                       <label  class="form-label">Phone</label>
                       @error('phone')<p class="text-danger"> {{$message}} </p> @enderror
 
