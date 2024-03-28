@@ -67,7 +67,7 @@ justify-content: center;
                                         </div>
                                         <div class="col-auto text-end">
                                             <h6>
-                                                {{ $item->status }}
+                                                {{ $order->status }}
                                             </h6>
                                         </div>
                                     </div>
