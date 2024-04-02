@@ -1,7 +1,13 @@
 @extends('user.layout.master')
 @section('title')
 @section('styles')
+    <style>
+        input[type=checkbox],
+        input[type=radio] {
 
+            width: 17px;
+        }
+    </style>
 @endsection
 @section('content')
 
@@ -15,7 +21,7 @@
 
                     </div>
 
-                    <form action="{{route('cart.finish')}}" method="POST">
+                    <form action="{{ route('cart.finish') }}" method="POST">
 
                         <div class="row mb-5">
                             <div class="col-sm-12">
@@ -31,14 +37,16 @@
                                             @csrf
 
                                             @foreach ($addresses as $address)
-                                                <div class="d-flex align-items-start mb-3">
+                                                <div class="d-flex align-items-start mb-3 address-container">
                                                     <input type="radio" name="address" value="{{ encrypt($address->id) }}"
                                                         class="mr-3 mt-3">
 
                                                     <div class="card bg-light mb-3 mb-auto" style="flex: 1">
-                                                        <div class="card-header d-flex">{{ $address->name }} <a
-                                                                class="ml-auto text-danger delete"
-                                                                href="{{ route('address.delete', encrypt($address->id)) }}"><img src="{{asset('images/bin.png')}}" alt="delete" width="16"></a>
+                                                        <div class="card-header d-flex">{{ $address->name }}
+                                                            <a class="ml-auto text-danger delete"
+                                                                href="{{ route('address.delete', encrypt($address->id)) }}">
+                                                                <img src="{{ asset('images/bin.png') }}" alt="delete"
+                                                                    width="16"></a>
                                                         </div>
                                                         <div class="card-body">
                                                             <h5 class="card-title">{{ $address->house }}</h5>
@@ -109,5 +117,16 @@
 
             updateTotals();
         });
+    </script>
+    <script>
+        $addressContainers = $('.address-container');
+        $deleteBtns = $('.delete');
+        $addressContainers.on('click', (e) => {
+
+            if (!$(e.target).hasClass('delete') && !$(e.target).parent().hasClass('delete')) {
+                var $radio = $(e.target).closest('.address-container').find('input[type=radio]');
+                $radio.prop('checked', true);
+            }
+        })
     </script>
 @endsection
