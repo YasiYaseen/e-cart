@@ -69,7 +69,9 @@
                         <div class="card mb-4">
                             <div class="card-body p-4 d-flex flex-row">
                                 <div class="form-outline flex-fill">
-                                    <h4>Total</h4>
+                                    <h4>Total
+
+                                    </h4>
                                 </div>
                                 <h4 id="total-amount">₹</h4>
                             </div>
@@ -111,7 +113,7 @@
                     total += subtotal;
                 });
 
-                $('#total-amount').text('₹' + total.toFixed(2));
+                $('#total-amount').text('₹' + total.toLocaleString());
             }
 
 
